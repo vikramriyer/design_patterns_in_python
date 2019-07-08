@@ -6,14 +6,14 @@ class DBAccessEngine:
 
     def get_db_access_engine_instance(self):
         if self.source == 'sql':
-            return SqlDbAccessEngine
+            return SqlDbAccessEngine()
         elif self.source == 'mongo':
-            return MongoDbAccessEngine
+            return MongoDbAccessEngine()
         else:
             raise ValueError(f'The source {self.source} is not supported yet.')
 
     def read_data(self, column):
-        self.engine.read_data(column)
+        return self.engine.read_data(column)
 
 
 class SqlDbAccessEngine:
@@ -21,10 +21,11 @@ class SqlDbAccessEngine:
     def __init__(self):
         self.host = 'localhost'
         self.port = 1234
-        self.connection = None # create the sql db connection using sqlalchemy
+        self.connection = None # CREATE MYSQL instance (sqlalchemy)
 
     def read_data(self, column):
-        data = f'select * from {column}'
+        data = 'select query to select everthing from documenmt (table) ' \
+               '"AGE" in mysql'
         return data
 
 
@@ -33,14 +34,26 @@ class MongoDbAccessEngine:
     def __init__(self):
         self.host = 'localhost'
         self.port = 9876
-        self.connection = None # create the mongo db connection using pymongo
+        self.connection = None # CREATE MONGODB instance (pymongo)
 
     def read_data(self, column):
-        data = db.collection.find()
+        data = 'select query to select everything from table "AGE" in mysql'
         return data
 
-if __name__ == '__main__':
-    print('Got no errors. ')
+def application_1():
+    sql_object = DBAccessEngine('mongo')
+    data = sql_object.read_data('age')
+    return data
 
-# TODO 1: creating connections for respective dbs
-# TODO 2: creating data manipulation common method to output same type of data
+def application_2():
+    sql_object = DBAccessEngine('sql')
+    data = sql_object.read_data('age')
+    return data
+
+if __name__ == '__main__':
+
+    print('Application 1: Gets data from MongoDB')
+    print(f'Mongo Data {application_1()} \n')
+
+    print('Application 2: Gets data from MySQL')
+    print(f'Mongo Data {application_2()}')
