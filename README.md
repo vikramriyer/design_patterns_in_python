@@ -4,9 +4,9 @@
 - Solutions to recurring problems in software.
 
 ## Index
-1. [Creational](https://github.com/vikramriyer/design_patterns_in_python/patterns/creational)
-2. [Structural](https://github.com/vikramriyer/design_patterns_in_python/patterns/structural)
-3. [Behavioural](https://github.com/vikramriyer/design_patterns_in_python/patterns/behavioral)
+1. [Creational](patterns/creational)
+2. [Structural](patterns/structural)
+3. [Behavioural](patterns/behavioral)
 
 ## Types of Design Patterns
 ### 1. Creational
